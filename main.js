@@ -3,14 +3,14 @@
 // https://www.tensorflow.org/js/guide/train_models
 
 
-const xs = tf.randomNormal([1000, 2]);
+const xs = tf.randomNormal([100, 2]);
 
 xs.array().then(x => {
   let ys = [];
   for (let i = 0; i < x.length; i++) {
-    let d = Math.sqrt(x[i][0]*x[i][0] + x[i][1]*x[i][1]);
-    if (d < 0.5) {
-      ys.push(0); // Label as 0 if it's within a radius of 0.5
+    let dSqr = x[i][0]*x[i][0] + x[i][1]*x[i][1];
+    if (dSqr < 1) {
+      ys.push(0); // Label as 0 if it's within a radius of 1
     }
     else {
       ys.push(1);
